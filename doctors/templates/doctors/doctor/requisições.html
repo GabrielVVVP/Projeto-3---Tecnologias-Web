@@ -1,0 +1,533 @@
+{% extends "doctors/base.html" %}
+{% load static %}
+
+{% block content %}
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="logo-img">
+                            <a href="/menu/{{id}}">
+                                <img style="min-width: 120px; min-width: 120px; max-height: 130px; max-width: 130px;" src="{% static 'doctors/img/logo.png' %}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9">
+                        <div class="menu_wrap d-none d-lg-block">
+                            <div class="menu_wrap_inner d-flex align-items-center justify-content-end">
+                                <div class="main-menu">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="/menu/patients/{{id}}" style="font-size: small;">Pacientes</a></li>
+                                            <li><a href="/menu/patientinst/{{id}}/3"style="font-size: small;">Instâncias</a></li>
+                                            <li><a href="/menu/patientdiag/{{id}}/4"style="font-size: small;">Diagnósticos</a></li>
+                                            <li><a href="/menu/events/{{id}}/5"style="font-size: small;">Eventos</a></li>
+                                            <li><a href="/menu/calendar/{{id}}/2"style="font-size: small;">Calendário</a></li>
+                                            <li><a class="popup-with-form" href="#test-form" style="font-size: small;">Logout</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-end -->
+
+<!-- bradcam_area_start  -->
+<div class="bradcam_area breadcam_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="bradcam_text">
+                    <h3>Requisições de Pacientes</h3>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="menu_wrap d-none d-lg-block">
+                    <div class="book_room">
+                        <div class="book_btn">
+                            <a href="#tabs" class="boxed-btn5">Verificar as requisições</a>
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bradcam_area_end  -->
+
+<!-- expert_doctors_area_start -->
+<div class="expert_doctors_area">
+    <div class="container">
+        <div class="row justify-content-center ">
+            <div class="col-lg-6">
+                <div class="section_title mb-55 text-center">
+                    <h3>Médico</h3>
+                    <p>{{doctor.spec}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="single_expert" >
+                    <div class="expert_thumb" style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);">
+                        <!--<img src="{{patient.user.image.url}}" alt="">-->
+                        <img src="{% static 'doctors/img/department/doctors.jpg' %}" alt="">
+                    </div>
+                    <div class="experts_name text-center" style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);">
+                        <h3>{{doctor.user.name}}</h3>
+                        <span>{{doctor.user.age}} Anos</span>
+                        <h1 style="margin-bottom: 5%;margin-top: 5%; font-size: small;">Especialidade</h1>
+                        <div class="row" style="margin-bottom: 5%;">
+                            <div class="col-xl-12">
+                                <h0>{{ doctor.diseases }}</h0>
+                            </div>
+                        </div>
+                        <div class="social_links">
+                            <ul>
+                                <li>
+                                    <a class="popup-with-form" href="#test-form2"> <i class="fa fa-cog"></i> Alterar Dados</a>
+                                </li>
+                                <li>
+                                    <a class="popup-with-form" href="#test-form3"> <i class="fa fa-lock"></i> Alterar Senha</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-lg-6">
+                <div class="section_title mb-55 text-center">
+                    <h3>Requisições Abertas</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+        {% for openrequest in openrequests %}
+            <div class="col-lg-4 col-md-6">
+                <div class="single_expert">
+                    <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
+                        <h3 style="margin-bottom: 5%; font-size: medium;">{{ openrequest.patient.user.name }}</h3>
+                        <span style="margin-bottom: 5%;">Data feita: {{ openrequest.date }}</span>
+                        <span style="margin-bottom: 5%;">Status: {{ openrequest.status }}</span>
+                        <form method="POST" action="/menu/patients/{{id}}/{{openrequest.patient.id}}/1">
+                            {% csrf_token %}
+                            <Button type="submit" style="margin-top: 5%;" class="genric-btn success">Aceitar</Button>
+                        </form>
+                        <form method="POST" action="/menu/patients/{{id}}/{{openrequest.patient.id}}/2">
+                            {% csrf_token %}
+                            <Button type="submit" style="margin-top: 5%;" class="genric-btn danger">Recusar</Button>
+                        </form>    
+                    </div>
+                </div>
+            </div>  
+        {% endfor %}
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-lg-6">
+                <div class="section_title mb-55 text-center">
+                    <h3>Lista de Pacientes</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            {% for closedrequest in closedrequests %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_expert">
+                        <div class="expert_thumb" style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);">
+                            <img src="{{ closedrequest.patient.user.image.url}}" alt="">
+                        </div>
+                        <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
+                            <h3 style="margin-bottom: 5%; font-size: medium;">{{ closedrequest.patient.user.name }}</h3>
+                            <span style="margin-bottom: 5%;">{{ closedrequest.patient.user.age}}</span>
+                            <h1 style="margin-bottom: 5%; font-size: small;">Profissão</h1>
+                            <div class="row" style="margin-bottom: 5%;">
+                                <div class="col-xl-12">
+                                    <h0>{{ closedrequest.patient.job }}</h0>
+                                </div>
+                            </div>
+                            <a href="/menu/doctor/view/{{id}}/{{closedrequest.patient.id}}" class="genric-btn info-border">Página do Paciente</a>    
+                        </div>
+                    </div>
+                </div>  
+            {% endfor %}
+            </div>
+    </div>
+</div>
+<!-- expert_doctors_area_end -->
+
+<!-- depertment_area_start  -->
+<div class="depertment_area" id="tabs">
+    <div class="container">
+        <div class="row custom_align align-items-end justify-content-between">
+            <div class="col-lg-6">
+                <div class="section_title">
+                    <h3>Menu</h3>
+                    <p>Na área do médico, algumas opções da ferramenta podem ser escolhidas.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="depart_ment_tab mb-30">
+                    <ul class="nav" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+                                <i class="flaticon-cell"></i>
+                                <h4>Requisições de Pacientes</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+                                <i class="flaticon-customer-service"></i>
+                                <h4>Histórico de Instâncias</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Neuroanatomy-tab" data-toggle="tab" href="#Neuroanatomy" role="tab" aria-controls="contact" aria-selected="false">
+                                <i class="flaticon-find"></i>
+                                <h4>Histórico de Diagnósticos</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+                                <i class="flaticon-doctor"></i>
+                                <h4>Marcar Consultas ou Cirurgias</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Astrology-tab" data-toggle="tab" href="#Astrology" role="tab" aria-controls="contact" aria-selected="false">
+                                <i class="flaticon-verified"></i>
+                                <h4>Calendário de Consultas</h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="dept_main_info white-bg">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <!-- single_content  -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="dept_thumb">
+                                <img src="{% static 'doctors/img/department/3.jpeg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="dept_info">
+                                <h3>Requisições de Pacientes</h3 >
+                                    <p>Nesta aba, é possível verificar pedidos de consulta de pacientes redirecionados pela plataforma. Cada paciente consegue realizar apenas um pedido de consulta por médico. </p>
+                                <a href="/menu/patients/{{id}}" class="boxed-btn">Verificar Requisições</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single_content  -->
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <!-- single_content  -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="dept_thumb">
+                                <img src="{% static 'doctors/img/department/5.jpg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="dept_info">
+                                <h3>Histórico de Instâncias</h3 >
+                                <p>Nesta aba, é possível verificar as instâncias abertas por pacientes redirecionados para você pela plataforma. </p>
+                                <a href="/menu/patientinst/{{id}}/3" class="boxed-btn">Verificar Instâncias</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single_content  -->
+                </div>
+                <div class="tab-pane fade" id="Neuroanatomy" role="tabpanel" aria-labelledby="Neuroanatomy-tab">
+                    <!-- single_content  -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="dept_thumb">
+                                <img src="{% static 'doctors/img/department/2.jpg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="dept_info">
+                                <h3>Histórico de Diagnósticos</h3 >
+                                <p>Nesta aba é possível verificar os diagnósticos feitos pela EndlessMedicalAPI dos pacientes redirecionados para você pela plataforma. </p>
+                                <a href="/menu/patientdiag/{{id}}/4" class="boxed-btn">Verificar Diagnósticos</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single_content  -->
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <!-- single_content  -->
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="dept_thumb">
+                            <img src="{% static 'doctors/img/department/9.jpg' %}"  alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="dept_info">
+                            <h3>Marcar Consultas ou Cirurgias</h3 >
+                            <p>Nesta aba é possível marcar as eventos como consultas ou cirurgias, a partir dos pacientes redirecionados para você pela plataforma.</p>
+                            <a href="/menu/events/{{id}}/5" class="boxed-btn">Marcar Eventos</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- single_content  -->
+                </div>
+                <div class="tab-pane fade" id="Astrology" role="tabpanel" aria-labelledby="Astrology-tab">
+                    <!-- single_content  -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="dept_thumb">
+                                <img src="{% static 'doctors/img/department/5.jpeg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="dept_info">
+                                <h3>Calendário de Consultas</h3 >
+                                <p> Nesta aba, é possível verificar as consultas ou cirurgias marcadas na plataforma em um calendário interativo. </p>
+                                <a href="/menu/calendar/{{id}}/2" class="boxed-btn">Verficar Calendário</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single_content  -->
+                </div>
+              </div>
+        </div>
+
+    </div>
+</div>
+<!-- depertment_area_end  -->
+
+<footer class="footer">
+    <div class="footer_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-md-6 col-lg-4 ">
+                    <div class="footer_widget">
+                        <div class="footer_logo">
+                            <a href="#">
+                                <img src="{% static 'doctors/img/logo.png' %}" alt="">
+                            </a>
+                        </div>
+                        <p class="address_text">Melhorando a sua qualidade de vida, <br> proporcionando diagnósticos de qualidade <br>  e disponível para todos.
+                        </p>
+                        <div class="socail_links">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="ti-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="ti-twitter-alt"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-lg-4">
+                    <div class="footer_widget">
+                        <h3 class="footer_title">
+                            Departamentos de Médicos cadastrados
+                        </h3>
+                        <ul class="links">
+                            <li><a href="#">Ginecologia</a></li>
+                            <li><a href="#">Pneumologia</a></li>
+                            <li><a href="#">Cardiologia</a></li>
+                            <li><a href="#">Neurologia</a></li>
+                            <li><a href="#">Traumatologia</a></li>
+                            <li><a href="#">Dentistas</a></li>
+                            <li><a href="#">Otorrinolaringologia</a></li>
+                            <li><a href="#">Oftalmologia</a></li>
+                            <li><a href="#">Radiologia</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4  col-md-6 col-lg-4">
+                    <div class="footer_widget">
+                        <h3 class="footer_title">
+                            Disponibilidade da ferramenta
+                        </h3>
+                        <ul class="meting_time">
+                            <li class="d-flex justify-content-between "><span>Todos os dias</span> <span>24 horas por dia</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copy-right_text">
+        <div class="container">
+            <div class="row">
+                <div class="bordered_1px "></div>
+                <div class="col-xl-12">
+                    <p class="copy_right text-center">
+                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- link that opens popup -->
+
+<!-- form itself end-->
+<form id="test-form" class="white-popup-block mfp-hide">
+    <div class="popup_box ">
+        <div class="popup_inner">
+            <form action="#">
+                <div class="row">
+                    <div class="col-xl-12" style="font-size: large; margin-bottom: 5%;">
+                        <h0>
+                            <span>Deseja voltar à página principal?</span>
+                        </h0>
+                    </div>
+                    <div class="col-xl-12">
+                        <a href="/" class="boxed-btn3">Sim</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</form>
+
+<form id="test-form2" class="white-popup-block mfp-hide" enctype="multipart/form-data" method="POST" action="/menu/update/{{id}}/user">
+    {% csrf_token %}
+    <div class="popup_box ">
+        <div class="popup_inner">
+            <h3>
+            <span>Alterar Dados</span>
+            </h3>
+            <form action="#">
+                <div class="row">
+                    <!--<div class="col-xl-12">
+                        <input type="file" id="myFile" name="filename" >
+                    </div>-->
+                    <div class="col-xl-12">
+                        <input type="text" id="nome" name="nome"  placeholder="{{doctor.user.name}}">
+                    </div>
+                    <div class="col-xl-3">
+                        <input type="number" min="0" max="120" id="idade" name="idade" placeholder="{{doctor.user.age}}">
+                    </div>
+                    <div class="col-xl-9">
+                        <input type="text" id="sexo" name="sexo"  placeholder="{{doctor.user.sex}}">
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="text" id="especialidade" name="especialidade"  placeholder="{{doctor.spec}}">
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="text" id="adicional" name="adicional"  placeholder="{{doctor.diseases}}">
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="email" id="email" name="email" placeholder="{{doctor.user.email}}">
+                    </div>
+                    <div class="col-xl-12">
+                        <button type="submit" class="boxed-btn3">Alterar Dados</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</form>
+
+<form id="test-form3" class="white-popup-block mfp-hide" enctype="multipart/form-data" method="POST" action="/menu/update/{{id}}/pass">
+    {% csrf_token %}
+    <div class="popup_box ">
+        <div class="popup_inner">
+            <h3>
+            <span>Alterar Senha</span>
+            </h3>
+            <form action="#">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <input type="password" id="senha" name="senha" placeholder="Digite a Senha Antiga">
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="password" id="senha2" name="senha2" placeholder="Digite a Nova Senha">
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="password" id="senha3" name="senha3" placeholder="Digite a Novamente a Nova Senha">
+                    </div>
+                    <div class="col-xl-12">
+                        <button type="submit" class="boxed-btn3">Alterar Senha</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</form>
+<!-- form itself end -->
+
+<!-- JS here -->
+<script src="{% static 'doctors/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'doctors/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'doctors/js/popper.min.js' %}"></script>
+<script src="{% static 'doctors/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'doctors/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'doctors/js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'doctors/js/ajax-form.js' %}"></script>
+<script src="{% static 'doctors/js/waypoints.min.js' %}"></script>
+<script src="{% static 'doctors/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'doctors/js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'doctors/js/scrollIt.js' %}"></script>
+<script src="{% static 'doctors/js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'doctors/js/wow.min.js' %}"></script>
+<script src="{% static 'doctors/js/nice-select.min.js' %}"></script>
+<script src="{% static 'doctors/js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'doctors/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'doctors/js/plugins.js' %}"></script>
+<script src="{% static 'doctors/js/gijgo.min.js' %}"></script>
+
+<script src="{% static 'doctors/js/main.js' %}"></script>
+<script>
+    $('.datepicker').datepicker({
+        iconsLibrary: 'fontawesome',
+        icons: {
+            rightIcon: '<span class="fa fa-calendar"></span>'
+        }
+    });
+
+    $('.timepicker').timepicker({
+        iconsLibrary: 'fontawesome',
+        icons: {
+            rightIcon: '<span class="fa fa-clock-o"></span>'
+        }
+    });
+$(document).ready(function() {
+$('.js-example-basic-multiple').select2();
+});
+</script>
+{% endblock %}
