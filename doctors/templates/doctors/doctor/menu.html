@@ -110,6 +110,10 @@
 </div>
 <!-- expert_doctors_area_end -->
 
+{% if alert == "warning" %} 
+<a id="warning" class="popup-with-form" href="#test-form4" style="visibility: hidden"></a>
+{% endif %} 
+
 <!-- depertment_area_start  -->
 <div class="depertment_area" id="tabs">
     <div class="container">
@@ -432,9 +436,30 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </form>
+
+<form id="test-form4" class="white-popup-block mfp-hide">
+    <div class="popup_box2 ">      
+        <div class="popup_inner">
+            <h3 style="font-size: large;">
+            <span><i class="fas fa-exclamation-triangle" style="margin-right: 2%;"></i>
+                <span style="margin-right: 3%;"> Aviso:</span>
+                {{alertmessage}}</span>
+                <i class="fas fa-exclamation-triangle" style="margin-left: 2%;"></i>
+            </h3>
+        </div>
+    </div>
+</form>
 <!-- form itself end -->
 
 <!-- JS here -->
+<script type="text/javascript">
+    window.onload=function(){
+     if(document.getElementById('warning')!=null||document.getElementById('warning')!=""){ 
+     document.getElementById('warning').click();
+     }
+    }
+</script>
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <script src="{% static 'doctors/js/vendor/modernizr-3.5.0.min.js' %}"></script>
 <script src="{% static 'doctors/js/vendor/jquery-1.12.4.min.js' %}"></script>
 <script src="{% static 'doctors/js/popper.min.js' %}"></script>

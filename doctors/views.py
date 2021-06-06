@@ -90,16 +90,52 @@ def index(request, login=False):
             sex = request.POST.get('sexo')
             email = request.POST.get('email')
             password = request.POST.get('senha')
+            if usertype == "Médico":
+                spec = request.POST.get('especialidade')
+                additional = request.POST.get('adicional')
+            else:
+                job = request.POST.get('profissao')
             #try:
             #    print(request.FILES['filename'].name)
             #    image_check = True
             #except:
             #    image_check = False
+            if name == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Nome" 
+                return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message})  
+            elif age == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Idade" 
+                return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message})
+            elif sex == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Sexo" 
+                return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message}) 
+            elif usertype == "Médico" and  spec =="":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Especialidade" 
+                return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message})
+            elif usertype == "Médico" and  additional =="":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Doenças" 
+                return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message}) 
+            elif usertype == "Paciente" and  job =="":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Profissão" 
+                return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message}) 
+            elif email == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Email" 
+                return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message}) 
+            elif password == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Senha" 
+                return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message})               
             if (User.objects.all().filter(name=name).exists()==False):
                 if (User.objects.all().filter(email=email).exists()==False):
                     if len(password)>=8:
                         passencrypted = encrypt_string(password)
-                        
                         #if image_check == True:
                             #image = request.FILES['filename']
                         newuser = User(name=name,age=age,sex=sex,email=email,password=passencrypted)
@@ -118,13 +154,19 @@ def index(request, login=False):
                             newpatient = Patient(user=newuser,job=job)
                             newpatient.save()
                         newuser.save()
-                        return render(request, 'doctors/index.html')
+                        return redirect(reverse('menu', kwargs={"user_id": str(newuser.encryptid)}))
                     else:
-                        return render(request, 'doctors/index.html')            
+                        alert = "warning"
+                        alert_message = "Senha Possui Menos de 8 Caracteres" 
+                        return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message})          
                 else:
-                    return render(request, 'doctors/index.html')     
+                    alert = "warning"
+                    alert_message = "Email Já Utilizado" 
+                    return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message})  
             else:
-                return render(request, 'doctors/index.html')
+                alert = "warning"
+                alert_message = "Usuário Já Existe" 
+                return render(request, 'doctors/index.html', {'alert':alert,'alertmessage':alert_message})
         else:
             email = request.POST.get('email')
             pass_receive = request.POST.get('senha')
@@ -155,11 +197,48 @@ def about(request,login=False):
             sex = request.POST.get('sexo')
             email = request.POST.get('email')
             password = request.POST.get('senha')
+            if usertype == "Médico":
+                spec = request.POST.get('especialidade')
+                additional = request.POST.get('adicional')
+            else:
+                job = request.POST.get('profissao')
             #try:
             #    print(request.FILES['filename'].name)
             #    image_check = True
             #except:
             #    image_check = False
+            if name == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Nome" 
+                return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message})  
+            elif age == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Idade" 
+                return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message})
+            elif sex == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Sexo" 
+                return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message}) 
+            elif usertype == "Médico" and  spec =="":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Especialidade" 
+                return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message})
+            elif usertype == "Médico" and  additional =="":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Doenças" 
+                return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message}) 
+            elif usertype == "Paciente" and  job =="":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Profissão" 
+                return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message}) 
+            elif email == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Email" 
+                return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message}) 
+            elif password == "":
+                alert = "warning"
+                alert_message = "Favor Preencher o Campo de Senha" 
+                return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message})               
             if (User.objects.all().filter(name=name).exists()==False):
                 if (User.objects.all().filter(email=email).exists()==False):
                     if len(password)>=8:
@@ -182,13 +261,19 @@ def about(request,login=False):
                             newpatient = Patient(user=newuser,job=job)
                             newpatient.save()
                         newuser.save()
-                        return render(request, 'doctors/about.html')
+                        return redirect(reverse('menu', kwargs={"user_id": str(newuser.encryptid)}))
                     else:
-                        return render(request, 'doctors/about.html')           
+                        alert = "warning"
+                        alert_message = "Senha Possui Menos de 8 Caracteres" 
+                        return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message})                 
                 else:
-                    return render(request, 'doctors/about.html')     
+                    alert = "warning"
+                    alert_message = "Usuário Inválido" 
+                    return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message})          
             else:
-                return render(request, 'doctors/about.html')
+                alert = "warning"
+                alert_message = "Usuário Já Existe" 
+                return render(request, 'doctors/about.html', {'alert':alert,'alertmessage':alert_message})
         else:
             email = request.POST.get('email')
             pass_receive = request.POST.get('senha')
@@ -250,14 +335,27 @@ def menu(request,user_id,type=""):
             newpass1 = request.POST.get('senha2')
             newpass2 = request.POST.get('senha3')
             oldencrypt = encrypt_string(oldpass)
-            if (user.password == oldencrypt)and(newpass1==newpass2):
+            if (user.password != oldencrypt)or(oldpass==""):
+                alert = "warning"
+                alert_message = "Senha Antiga Incorreta"
+            elif (newpass1 =="")or(newpass2 ==""):
+                alert = "warning"
+                alert_message = "Favor Preencher Senha Nova"     
+            elif (newpass1!=newpass2):
+                alert = "warning"
+                alert_message = "Valores Diferentes da Senha Nova"     
+            else:
                 newencrypt = encrypt_string(newpass1)
                 user.password = newencrypt 
-                user.save()      
+                user.save()
+                alert = "default"
+                alert_message = ""
+            if usertype == "Patient":     
+                return render(request, 'doctors/patient/menu.html', {'patient':thisuser,'id':user_id,'alert':alert,'alertmessage':alert_message})
+            else:
+                return render(request, 'doctors/doctor/menu.html', {'doctor':thisuser,'id':user_id,'alert':alert,'alertmessage':alert_message})            
         if usertype == "Patient":
             job = request.POST.get('profissao')
-            print(job)
-            print(thisuser.job)
             if (job!="")and(job!=None) and (thisuser.job != job):
                 thisuser.job = job   
                 thisuser.save()
