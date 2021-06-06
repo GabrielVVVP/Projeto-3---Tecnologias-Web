@@ -27,7 +27,7 @@ k = json.loads(keys.read())
 SECRET_KEY = k['djangokey']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['warm-everglades-39735.herokuapp.com', 'localhost', '127.0.0.1']
 
