@@ -88,7 +88,7 @@ A comunicação entre as duas partes de Médico e Paciente são dadas da seguint
 1. O Paciente envia uma requisição para um Médico;
 2. O Médico aceita a Requisição;
 3. O dados de Instâncias e Diagnósticos do Paciente agora estão disponíveis para este Médico;
-4. Qualquer consulta ou cirurgia marcada por este médico para este paciente irá aparecer tanto no Calendário do Médico, quanto no Calendário do Paciente.
+4. Qualquer consulta ou cirurgia marcada por este Médico para este Paciente irá aparecer tanto no Calendário do Médico, quanto no Calendário do Paciente.
 
 ## Manual da User Interface
 Para facilitar a navegação na plataforma, este manual de utilização foi construído.
