@@ -101,7 +101,7 @@ A partir da página principal ou da página sobre, o usuário poderá criar uma 
   <img src="https://user-images.githubusercontent.com/60860861/120946953-a2d3e080-c714-11eb-8d86-ef2148e30a67.png" width="800" height="500"></img>
 </p>
 
-Após se cadastrar, o usuário é redirecionado para o Menu do Médico ou do Paciente, de acordo com o tipo de conta. Caso retorne posteriormente, para ingressar novamente na conta, basta selecionar login, e utilizar os mesmos dados de cadastro, de login e senha.
+Após se cadastrar, o usuário é redirecionado para o Menu do Médico ou do Paciente, de acordo com o tipo de conta. Caso retorne posteriormente, para ingressar novamente na conta, basta selecionar Login, e utilizar os mesmos dados de cadastro, de email e senha.
 
 ### Paciente
 Após entrar na conta via Criar Conta ou Login, o usuário do tipo Paciente é redirecionado para o seu menu principal.
