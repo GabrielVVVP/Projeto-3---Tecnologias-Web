@@ -711,10 +711,11 @@ def patients(request,user_id,patient_id=None,type=None):
     if request.method == 'POST':
         if type=="1":
             usertype = None
-            thisuser = Doctor.objects.all().filter(user=user_id).first()
+	    user = User.objects.all().filter(encryptid=user_id).first()
+            thisuser = Doctor.objects.all().filter(user=user).first()
             usertype = "Doctor"
             if thisuser == None:
-                thisuser = Patient.objects.all().filter(user=user_id).first()
+                thisuser = Patient.objects.all().filter(user=user).first()
                 usertype = "Patient"
             thispat = Patient.objects.all().filter(id=patient_id).first()
             thisreq = Reference.objects.all().filter(doctor=thisuser,patient=thispat).first()
