@@ -69,7 +69,14 @@ Tarefas para Realizar:
 ## Projeto
 
 O projeto se chama SmartDoctor e se trata de uma plataforma Web que realiza diagnósticos com inteligência artificial a partir da EndlessMedical API, e recomenda médicos a partir destes diagnósticos. Os médicos recomendados podem ver o histórico dos pacientes e marcar consultas e cirurgias. O projeto está hospedado na plataforma Heroku.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/120951459-3ad6c780-c71f-11eb-8677-14be9b63ae88.png" width="600" height="500"></img>
+</p>
+
 <br></br>Link do projeto: https://warm-everglades-39735.herokuapp.com/
+<br></br>A logo do projeto foi feita na plataforma: https://freelogodesign.org
+<br></br>O template do projeto obtido no site: https://colorlib.com/
 
 ### Problema
 Diversos pacientes com doenças incomuns, raras ou não identificadas, muitas vezes dependem de sorte para receber o diagnóstico e tratamento correto, o que depende de encontrar um médico que tenha conhecimento na área, ou ao mesmo encontrar um médico que conheça algum outro e que o possa recomendar, algo que muitas vezes pode levar a tratamentos sem resultados positivos, acarretando em consequências, ou em casos mais graves, até na morte. 
