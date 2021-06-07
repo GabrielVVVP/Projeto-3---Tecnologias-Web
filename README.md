@@ -69,7 +69,7 @@ Tarefas para Realizar:
 ## Projeto
 
 O projeto se chama SmartDoctor e se trata de uma plataforma Web de diagnósticos com inteligência artificial que é hospedada na plataforma Heroku.
-Link do projeto: https://warm-everglades-39735.herokuapp.com/
+<br></br>Link do projeto: https://warm-everglades-39735.herokuapp.com/
 
 ### Problema
 Diversos pacientes com doenças incomuns, raras ou não identificadas, muitas vezes dependem de sorte para receber o diagnóstico e tratamento correto, o que depende de encontrar um médico que tenha conhecimento na área, ou ao mesmo encontrar um médico que conheça algum outro e que o possa recomendar, algo que muitas vezes pode levar a tratamentos sem resultados positivos, acarretando em consequências, ou em casos mais graves, até na morte. 
@@ -101,7 +101,7 @@ Após entrar na conta via Criar Conta ou Login, o usuário do tipo Paciente é r
 
 #### Menu
 Na página principal do Paciente, cinco opções de páginas podem ser selecionadas.
-Elas estão organizadas na ordem em que a plataforma foi projetada:
+<br></br>Elas estão organizadas na ordem em que a plataforma foi projetada:
 
 <p align="center">
   Criar/Editar Instâncias -> Diagnóstico Inteligente -> Histórico de Diagnósticos (Opcional) -> Médicos Especialistas -> Calendário
@@ -119,7 +119,7 @@ Após entrar na conta via Criar Conta ou Login, o usuário do tipo Médico é re
 
 #### Menu
 Na página principal do Médico, cinco opções de páginas podem ser selecionadas.
-Elas estão organizadas na ordem em que a plataforma foi projetada:
+<br></br>Elas estão organizadas na ordem em que a plataforma foi projetada:
 
 <p align="center">
   Aceitar/Recusar Requisições -> Histórico de Instâncias -> Histórico de Diagnósticos -> Marcar Eventos -> Calendário
