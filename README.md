@@ -90,6 +90,7 @@ Para facilitar a navegação na plataforma, este manual de utilização foi cons
 ### Página Principal
 A partir da página principal ou da página sobre, o usuário poderá criar uma conta na plataforma, caso seja um médico, deverá selecionar Criar Conta e depois Médico, e caso seja um Paciente, deverá selecionar Criar Conta e depois Paciente e preencher o Cadastro.
 
+<br></br>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/60860861/120946953-a2d3e080-c714-11eb-8d86-ef2148e30a67.png" width="800" height="500"></img>
 </p>
@@ -101,10 +102,16 @@ Após entrar na conta via Criar Conta ou Login, o usuário do tipo Paciente é r
 
 #### Menu
 Na página principal do Paciente, cinco opções de páginas podem ser selecionadas.
+
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/120949534-1f69bd80-c71b-11eb-8486-a89a3d7a887f.png" width="800" height="500"></img>
+</p>
+
 <br></br>Elas estão organizadas na ordem em que a plataforma foi projetada:
 
 <p align="center">
-  Criar/Editar Instâncias -> Diagnóstico Inteligente -> Histórico de Diagnósticos (Opcional) -> Médicos Especialistas -> Calendário
+  Adicionar Sintomas -> Diagnóstico Inteligente -> Histórico de Diagnósticos -> Médicos Especialistas -> Calendário de Consultas
 </p>
 
 Assim, a ordem de eventos é:
@@ -112,22 +119,28 @@ Assim, a ordem de eventos é:
 2. Na página de Diagnóstico Inteligente: Selecionar a instância na qual se deseja realizar o diagnóstico e verificar os resultados;
 3. Na página de Histórico de Diagnóstico: Caso queira verificar novamente o resultado do diagnóstico obtido. Caso contrário ir para a próxima página/etapa;
 4. Na página de Médicos Especialistas: Ao selecionar um diagnóstico recebido, a plataforma irá recomendar um médico baseado na sua especialidade, e o paciente poderá mandar uma requisição de consulta para que o médico selecionado possa lhe avaliar. Após o médico receber esta requisição e aceitar, basta o usuário aguardar a resposta do médico via email;
-5. Na página de Calendário: Nesta ferramenta útil, o usuário poderá sempre verificar as datas e características de consultas e cirurgias dos médicos recomendados pela plataforma.
+5. Na página de Calendário de Consultas: Nesta ferramenta útil, o usuário poderá sempre verificar as datas e características de consultas e cirurgias dos médicos recomendados pela plataforma.
 
 ### Médico
 Após entrar na conta via Criar Conta ou Login, o usuário do tipo Médico é redirecionado para o seu menu principal.
 
 #### Menu
 Na página principal do Médico, cinco opções de páginas podem ser selecionadas.
+
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/120949747-956e2480-c71b-11eb-810a-46b0ad799d9f.png" width="800" height="500"></img>
+</p>
+
 <br></br>Elas estão organizadas na ordem em que a plataforma foi projetada:
 
 <p align="center">
-  Aceitar/Recusar Requisições -> Histórico de Instâncias -> Histórico de Diagnósticos -> Marcar Eventos -> Calendário
+  Requisições de Pacientes -> Histórico de Instâncias -> Histórico de Diagnósticos -> Marcar Consultas ou Cirurgias -> Calendário de Consultas
 </p>
 
 Assim, a ordem de eventos é:
-1. Na página de Aceitar/Recusar Requisições: Ver as requisições de acompanhamento médico em aberto feita pelos pacientes e pode aceitar ou recusá-las. Após aceitar a requisição, todos os pacientes aceitos aparecem na lista de pacientes; 
+1. Na página de Requisições de Pacientes: Ver as requisições de acompanhamento médico em aberto feita pelos pacientes e pode aceitar ou recusá-las. Após aceitar a requisição, todos os pacientes aceitos aparecem na lista de pacientes; 
 2. Na página de Histórico de Instâncias: Escolher qualquer paciente aceito da lista de pacientes e verificar as suas instâncias (conjunto de sintomas);
 3. Na página de Histórico de Diagnóstico: Escolher qualquer paciente aceito da lista de pacientes e verificar os seus diagnósticos e assim avaliar o seu caso;
-4. Na página de Marcar Eventos: A partir da análise dos sintomas e diagnósticos, o médico pode marcar um evento, como uma consulta com o paciente para avaliar o seu caso;
-5. Na página de Calendário: Todos as consultas ou cirurgias marcados pelo médico na plataforma estarão mostrados neste calendário interativo, para facilitar a organização e evitar conflitos de horários.
+4. Na página de Marcar Consultas ou Cirurgias: A partir da análise dos sintomas e diagnósticos, o médico pode marcar um evento, como uma consulta com o paciente para avaliar o seu caso;
+5. Na página de Calendário de Consultas: Todos as consultas ou cirurgias marcados pelo médico na plataforma estarão mostrados neste calendário interativo, para facilitar a organização e evitar conflitos de horários.
