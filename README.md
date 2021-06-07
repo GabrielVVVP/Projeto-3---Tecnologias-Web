@@ -68,14 +68,14 @@ Tarefas para Realizar:
 
 ## Projeto
 
-O projeto se chama SmartDoctor e se trata de uma plataforma Web de diagnósticos com inteligência artificial que é hospedada na plataforma Heroku.
+O projeto se chama SmartDoctor e se trata de uma plataforma Web que realiza diagnósticos com inteligência artificial a partir da EndlessMedical API, e recomenda médicos a partir destes diagnósticos. Os médicos recomendados podem ver o histórico dos pacientes e marcar consultas e cirurgias. O projeto está hospedado na plataforma Heroku.
 <br></br>Link do projeto: https://warm-everglades-39735.herokuapp.com/
 
 ### Problema
 Diversos pacientes com doenças incomuns, raras ou não identificadas, muitas vezes dependem de sorte para receber o diagnóstico e tratamento correto, o que depende de encontrar um médico que tenha conhecimento na área, ou ao mesmo encontrar um médico que conheça algum outro e que o possa recomendar, algo que muitas vezes pode levar a tratamentos sem resultados positivos, acarretando em consequências, ou em casos mais graves, até na morte. 
 
 ### Objetivo
-O seu principal objetivo é gerar um diagnóstico com inteligência artificial a partir da EndlessMedical API para um usuário paciente a partir de um conjunto de sintomas como tosse ou dores abdominais, e deixar que a plataforma recomende médicos (também cadastrados) à partir das suas especializações individuais e dos resultados deste diagnóstico. Desta forma, os médicos ideais com maiores conhecimentos nas doenças de maior probabilidade mencionadas no resultado do diagnóstico podem ser recomendados diretamente ao paciente e aumentar as chances de um tratamento bem sucedido. Os pacientes apenas precisam selecionar o que estão sentindo (sintomas) e colocar um valor de gravidade (0-10) sendo 0 muito leve e 10 gravíssimo. A plataforma também evoluiu para possibilitar que os médicos também marquem consultas com os seus pacientes, utilizando um calendário interativo.
+O seu principal objetivo é gerar um diagnóstico à partir de inteligência artificial para um usuário paciente a partir de um conjunto de sintomas como tosse ou dores abdominais, e deixar que a plataforma recomende médicos (também cadastrados) à partir das suas especializações individuais e dos resultados deste diagnóstico. Desta forma, os médicos ideais com maiores conhecimentos nas doenças de maior probabilidade mencionadas no resultado do diagnóstico podem ser recomendados diretamente ao paciente e aumentar as chances de um tratamento bem sucedido. Os pacientes apenas precisam selecionar o que estão sentindo (sintomas) e colocar um valor de gravidade (0-10) sendo 0 muito leve e 10 gravíssimo. A plataforma também evoluiu para possibilitar que os médicos também marquem consultas com os seus pacientes, utilizando um calendário interativo.
 
 ### Arquitetura
 Já que o projeto consiste em diversas partes comunicando entre si, a definição de um diagrama demonstrando como elas se comunicam facilita bastante o entendimento, o funcionamento e os objetivos do projeto.
