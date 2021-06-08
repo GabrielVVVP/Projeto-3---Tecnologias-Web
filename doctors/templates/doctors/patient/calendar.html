@@ -452,10 +452,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     {% for consulta in consultas %}
     {
     id: "{{ consulta.id }}",
-    name: "{{ consulta.eventtype }}",
-    description: "Médico: {{consulta.doctor.user.name}}. <br/> Especialidade: {{consulta.doctor.spec}}. <br/>  Descrição: {{ consulta.description }}",
+    name: "{{ consulta.name }}",
+    description: "Médico: {{consulta.doctor}}. <br/> Especialidade: {{consulta.spec}}. <br/>  Descrição: {{ consulta.description }}",
     date: "{{ consulta.date }}",
-    type: "event",
+    type: "{{ consulta.caltype }}",
     }, 
     {% endfor %}
 ];    

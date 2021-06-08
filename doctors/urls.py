@@ -24,6 +24,7 @@ urlpatterns = [
     path('menu/doctors/<user_id>', views.doctors, name='doctors'),
     path('menu/doctors/view/<user_id>/<diag_id>', views.doctors, name='viewdoctors'),
     path('menu/doctor/view/<user_id>/<doc_id>', views.docshow, name='thisdoctor'),
+    path('menu/check/doctor/patient/view/<user_id>/<patient_id>', views.patshow, name='thispat'),
     path('menu/calendar/<user_id>', views.calendar, name='calendar'),
     path('menu/patients/<user_id>', views.patients, name='patients'),
     path('menu/patients/<user_id>/<patient_id>/<type>', views.patients, name='addrempatients'),
@@ -34,6 +35,8 @@ urlpatterns = [
     path('menu/patientdiag/patient/<user_id>/<patient_id>', views.history, name='diagspatient'),
     path('menu/patientdiag/patient/diagnostic/<user_id>/<patient_id>/<diag_id>/<check>', views.diagnostic, name='diagpatient'),
     path('menu/events/<user_id>/<type>', views.patients, name='eventpatients'),
+    path('menu/events/edit/<user_id>/<event_id>', views.event, name='eventpatients'),
     path('menu/events/patient/<user_id>/<patient_id>', views.event, name='eventpatient'),
+    path('menu/events/patient/<user_id>/<event_id>/<type>', views.event, name='editevent'),
     path('menu/calendar/<user_id>/<type>', views.calendar, name='doccalendar')
 ]

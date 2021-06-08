@@ -45,28 +45,29 @@
 <!-- bradcam_area_start  -->
 <div class="bradcam_area breadcam_bg">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-xl-6">
-                <div class="bradcam_text">
-                    <h3>Histórico de Instâncias</h3>
-                </div>
+                <div class="menu_wrap d-none d-lg-block">
+                    <div class="bradcam_text">
+                        <h3> <span>Editar Eventos</span>  </h3>
+                    </div>
+                </div>   
             </div>
             <div class="col-xl-6 col-lg-6">
                 <div class="menu_wrap d-none d-lg-block">
                     <div class="book_room">
                         <div class="book_btn">
-                            <a href="#instances" class="boxed-btn5">Escolha o paciente</a>
+                            <a href="#editev" class="boxed-btn5">Edite este Evento</a>
                         </div>      
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
 </div>
-<!-- bradcam_area_end  -->
 
 <!-- expert_doctors_area_start -->
-<div class="expert_doctors_area">
+<div class="expert_doctors_area" >
     <div class="container">
         <div class="row justify-content-center ">
             <div class="col-lg-6">
@@ -92,7 +93,7 @@
                                 <h0>{{ doctor.diseases }}</h0>
                             </div>
                         </div>
-                        <div class="social_links" id="instances">
+                        <div class="social_links" id="editev">
                             <ul>
                                 <li>
                                     <a class="popup-with-form" href="#test-form2"> <i class="fa fa-cog"></i> Alterar Dados</a>
@@ -106,47 +107,37 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center" >
+        <div class="row justify-content-center ">
             <div class="col-lg-6">
                 <div class="section_title mb-55 text-center">
-                    <h3>Lista de Pacientes</h3>
+                    <h3>Editar Evento</h3>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
-            {% for closedrequest in closedrequests %}
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_expert">
-                        <div class="expert_thumb" style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);">
-                            <img src="{{ closedrequest.patient.user.image.url}}" alt="">
+            <div class="col-lg-6 col-md-6">
+                <div class="single_expert">
+                    <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
+                        <h3 style="margin-bottom: 5%;">{{ event.eventtype }}</h3>
+                        <span style="margin-bottom: 5%;">Data: {{ event.date }}</span>
+                        <span style="margin-bottom: 5%;">Paciente: {{ event.patient.user.name }}</span>
+                        <span style="margin-bottom: 5%;">Descrição: {{ event.description }}</span>
+                        <div style="margin-top: 5%;">
+                            <a class="popup-with-form" href="#test-form4">Editar Evento</a>
                         </div>
-                        <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
-                            <h3 style="margin-bottom: 5%; font-size: medium;">{{ closedrequest.patient.user.name }}</h3>
-                            <span style="margin-bottom: 5%;">{{ closedrequest.patient.user.age}} Anos</span>
-                            <span style="margin-bottom: 5%;">Profissão: {{ closedrequest.patient.job }}</span>
-                            <a href="/menu/patientinst/patient/{{id}}/{{closedrequest.patient.id}}" class="genric-btn info-border">Instâncias</a>    
-                        </div>
+                        <div style="margin-top: 2%;">
+                            <a href="#test-form5" class="popup-with-form">Apagar Evento</a> 
+                        </div>    
                     </div>
-                </div>  
-            {% endfor %}
-            {% if not closedrequests %}
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_expert">
-                        <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
-                            <h3 style="margin-bottom: 5%; font-size: medium;">Nenhum Paciente na Lista</h3>
-                            <span style="margin-bottom: 5%;">Aguarde Novas Requisições</span> 
-                        </div>
-                    </div>
-                </div>  
-            </div>
-            {% endif %}
-            </div>
+                </div>
+            </div>  
+        </div>
     </div>
 </div>
 <!-- expert_doctors_area_end -->
 
 <!-- depertment_area_start  -->
-<div class="depertment_area">
+<div class="depertment_area" id="tabs">
     <div class="container">
         <div class="row custom_align align-items-end justify-content-between">
             <div class="col-lg-6">
@@ -161,13 +152,13 @@
                 <div class="depart_ment_tab mb-30">
                     <ul class="nav" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">
+                            <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">
                                 <i class="flaticon-cell"></i>
                                 <h4>Requisições de Pacientes</h4>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
                                 <i class="flaticon-customer-service"></i>
                                 <h4>Histórico de Instâncias</h4>
                             </a>
@@ -179,7 +170,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+                            <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">
                                 <i class="flaticon-doctor"></i>
                                 <h4>Marcar Consultas ou Cirurgias</h4>
                             </a>
@@ -196,7 +187,7 @@
         </div>
         <div class="dept_main_info white-bg">
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade " id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <!-- single_content  -->
                     <div class="row align-items-center">
                         <div class="col-lg-5">
@@ -214,7 +205,7 @@
                     </div>
                     <!-- single_content  -->
                 </div>
-                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <!-- single_content  -->
                     <div class="row align-items-center">
                         <div class="col-lg-5">
@@ -250,7 +241,7 @@
                     </div>
                     <!-- single_content  -->
                 </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <!-- single_content  -->
                 <div class="row align-items-center">
                     <div class="col-lg-5">
@@ -291,7 +282,6 @@
 
     </div>
 </div>
-<!-- depertment_area_end  -->
 
 <footer class="footer">
     <div class="footer_top">
@@ -461,6 +451,68 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     </div>
                     <div class="col-xl-12">
                         <button type="submit" class="boxed-btn3">Alterar Senha</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</form>
+
+<form id="test-form4" class="white-popup-block mfp-hide" method="POST" action="/menu/events/patient/{{id}}/{{event.id}}/edit">
+    {% csrf_token %}
+    <div class="popup_box ">
+        <div class="popup_inner">
+            <h3>
+            <span>Editar Evento</span>
+            </h3>
+            <form action="#">
+                <div class="row">
+                    <!--<div class="col-xl-12">
+                        <input type="file" id="myFile" name="filename" >
+                    </div>-->
+                    <div class="col-xl-12">
+                        <select class="form-select wide" id="default-select" name="default-select" class="">
+                            <option data-display="Escolha o tipo de Evento">Escolha o tipo de Evento</option>
+                            {%if event.eventtype == "Consulta" %}
+                            <option selected="selected" data-display="Consulta">Consulta</option>
+                            <option data-display="Cirurgia">Cirurgia</option>
+                            {%else%}
+                            <option data-display="Consulta">Consulta</option>
+                            <option selected="selected" data-display="Cirurgia">Cirurgia</option>
+                            {%endif%}
+                        </select>
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="date" id="data" name="data" placeholder="{{event.date}}">
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="text" id="descricao" name="descricao"  placeholder="{{event.description}}">
+                    </div>
+                    <div class="col-xl-12">
+                        <button type="submit" class="boxed-btn3">Alterar Evento</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</form>
+
+<form id="test-form5" class="white-popup-block mfp-hide" method="POST" action="/menu/events/patient/{{id}}/{{event.id}}/delete">
+    {% csrf_token %}
+    <div class="popup_box ">
+        <div class="popup_inner">
+            <h3>
+            <span>Deletar Evento</span>
+            </h3>
+            <form action="#">
+                <div class="row">
+                    <div class="col-xl-12" style="font-size: large; margin-bottom: 5%;">
+                        <h0>
+                            <span>Tem certeza de que deseja deletar este evento?</span>
+                        </h0>
+                    </div>
+                    <div class="col-xl-12">
+                        <button type="submit" class="boxed-btn3">Sim</button>
                     </div>
                 </div>
             </form>

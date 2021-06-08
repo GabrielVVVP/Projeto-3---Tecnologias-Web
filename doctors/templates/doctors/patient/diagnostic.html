@@ -127,6 +127,19 @@
             {% endif %}      
         {% endfor %}
         </div>
+        <div class="row justify-content-center">
+            {% if not open %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_expert">
+                            <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
+                                <h3 style="margin-bottom: 5%; font-size: medium;">Nenhuma Instância Pendente de Diagnóstico</h3>
+                                <span style="margin-bottom: 5%;">Não há nenhuma instância ativa, ou pendente de diagnóstico</span> 
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 <!-- expert_doctors_area_end -->

@@ -122,18 +122,24 @@
                         </div>
                         <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
                             <h3 style="margin-bottom: 5%; font-size: medium;">{{ closedrequest.patient.user.name }}</h3>
-                            <span style="margin-bottom: 5%;">{{ closedrequest.patient.user.age}}</span>
-                            <h1 style="margin-bottom: 5%; font-size: small;">Profissão</h1>
-                            <div class="row" style="margin-bottom: 5%;">
-                                <div class="col-xl-12">
-                                    <h0>{{ closedrequest.patient.job }}</h0>
-                                </div>
-                            </div>
+                            <span style="margin-bottom: 5%;">{{ closedrequest.patient.user.age}} Anos</span>
+                            <span style="margin-bottom: 5%;">Profissão: {{ closedrequest.patient.job }}</span>
                             <a href="/menu/events/patient/{{id}}/{{closedrequest.patient.id}}" class="genric-btn info-border">Marcar com Paciente</a>    
                         </div>
                     </div>
                 </div>  
             {% endfor %}
+            {% if not closedrequests %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_expert">
+                        <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
+                            <h3 style="margin-bottom: 5%; font-size: medium;">Nenhum Paciente na Lista</h3>
+                            <span style="margin-bottom: 5%;">Aguarde Novas Requisições</span> 
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            {% endif %}
             </div>
     </div>
 </div>
@@ -455,6 +461,37 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     </div>
                     <div class="col-xl-12">
                         <button type="submit" class="boxed-btn3">Alterar Senha</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</form>
+
+<form id="test-form4" class="white-popup-block mfp-hide" method="POST" action="/menu/events/patient/{{id}}/{{patient.id}}">
+    {% csrf_token %}
+    <div class="popup_box ">
+        <div class="popup_inner">
+            <h3>
+            <span>Novo Evento</span>
+            </h3>
+            <form action="#">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <select class="form-select wide" id="default-select" name="default-select" class="">
+                            <option data-display="Escolha o tipo de Evento">Escolha o tipo de Evento</option>
+                            <option data-display="Consulta">Consulta</option>
+                            <option data-display="Cirurgia">Cirurgia</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="date" id="data" name="data" placeholder="Escolha a data">
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="text" id="descricao" name="descricao"  placeholder="Descrição do Evento">
+                    </div>
+                    <div class="col-xl-12">
+                        <button type="submit" class="boxed-btn3">Criar Evento</button>
                     </div>
                 </div>
             </form>

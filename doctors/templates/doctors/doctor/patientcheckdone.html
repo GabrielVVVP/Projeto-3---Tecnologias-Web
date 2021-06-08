@@ -1,5 +1,6 @@
 {% extends "doctors/base.html" %}
 {% load static %}
+{% load index %}
 
 {% block content %}
 <header>
@@ -9,7 +10,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-3 col-lg-3">
                         <div class="logo-img">
-                            <a href="/menu/{{id}}">
+                            <a href="/menu/{{id}}" >
                                 <img style="min-width: 120px; min-width: 120px; max-height: 130px; max-width: 130px;" src="{% static 'doctors/img/logo.png' %}" alt="">
                             </a>
                         </div>
@@ -45,28 +46,29 @@
 <!-- bradcam_area_start  -->
 <div class="bradcam_area breadcam_bg">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-xl-6">
-                <div class="bradcam_text">
-                    <h3>Histórico de Instâncias</h3>
-                </div>
+                <div class="menu_wrap d-none d-lg-block">
+                    <div class="bradcam_text">
+                        <h3> <span>Requisições de Pacientes</span>  </h3>
+                    </div>
+                </div>   
             </div>
             <div class="col-xl-6 col-lg-6">
                 <div class="menu_wrap d-none d-lg-block">
                     <div class="book_room">
                         <div class="book_btn">
-                            <a href="#instances" class="boxed-btn5">Escolha o paciente</a>
+                            <a href="#check" class="boxed-btn5">Verifique o seu paciente</a>
                         </div>      
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
 </div>
-<!-- bradcam_area_end  -->
 
 <!-- expert_doctors_area_start -->
-<div class="expert_doctors_area">
+<div class="expert_doctors_area" >
     <div class="container">
         <div class="row justify-content-center ">
             <div class="col-lg-6">
@@ -92,7 +94,7 @@
                                 <h0>{{ doctor.diseases }}</h0>
                             </div>
                         </div>
-                        <div class="social_links" id="instances">
+                        <div class="social_links" id="check">
                             <ul>
                                 <li>
                                     <a class="popup-with-form" href="#test-form2"> <i class="fa fa-cog"></i> Alterar Dados</a>
@@ -106,47 +108,35 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center" >
+        <div class="row justify-content-center ">
             <div class="col-lg-6">
                 <div class="section_title mb-55 text-center">
-                    <h3>Lista de Pacientes</h3>
+                    <h3>Paciente</h3>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
-            {% for closedrequest in closedrequests %}
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_expert">
-                        <div class="expert_thumb" style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);">
-                            <img src="{{ closedrequest.patient.user.image.url}}" alt="">
-                        </div>
-                        <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
-                            <h3 style="margin-bottom: 5%; font-size: medium;">{{ closedrequest.patient.user.name }}</h3>
-                            <span style="margin-bottom: 5%;">{{ closedrequest.patient.user.age}} Anos</span>
-                            <span style="margin-bottom: 5%;">Profissão: {{ closedrequest.patient.job }}</span>
-                            <a href="/menu/patientinst/patient/{{id}}/{{closedrequest.patient.id}}" class="genric-btn info-border">Instâncias</a>    
-                        </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single_expert">
+                    <div class="expert_thumb" style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);">
+                        <img src="{% static 'doctors/img/department/patients.jpg' %}" alt="">
                     </div>
-                </div>  
-            {% endfor %}
-            {% if not closedrequests %}
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_expert">
-                        <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
-                            <h3 style="margin-bottom: 5%; font-size: medium;">Nenhum Paciente na Lista</h3>
-                            <span style="margin-bottom: 5%;">Aguarde Novas Requisições</span> 
-                        </div>
+                    <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
+                        <h3 style="margin-bottom: 5%; font-size: medium;">{{ patient.user.name }}</h3>
+                        <span style="margin-bottom: 5%;">{{ patient.user.age}} Anos</span>
+                        <span style="margin-bottom: 5%;">Sexo: {{ patient.user.sex}}</span>
+                        <span style="margin-bottom: 5%;">Email: {{ patient.user.email}}</span>
+                        <span style="margin-bottom: 5%;">Profissão: {{ patient.job }}</span>
                     </div>
-                </div>  
-            </div>
-            {% endif %}
-            </div>
+                </div>
+            </div>  
+        </div>
     </div>
 </div>
 <!-- expert_doctors_area_end -->
 
 <!-- depertment_area_start  -->
-<div class="depertment_area">
+<div class="depertment_area" id="tabs">
     <div class="container">
         <div class="row custom_align align-items-end justify-content-between">
             <div class="col-lg-6">
@@ -161,13 +151,13 @@
                 <div class="depart_ment_tab mb-30">
                     <ul class="nav" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
                                 <i class="flaticon-cell"></i>
                                 <h4>Requisições de Pacientes</h4>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
                                 <i class="flaticon-customer-service"></i>
                                 <h4>Histórico de Instâncias</h4>
                             </a>
@@ -196,7 +186,7 @@
         </div>
         <div class="dept_main_info white-bg">
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade " id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <!-- single_content  -->
                     <div class="row align-items-center">
                         <div class="col-lg-5">
@@ -214,7 +204,7 @@
                     </div>
                     <!-- single_content  -->
                 </div>
-                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <!-- single_content  -->
                     <div class="row align-items-center">
                         <div class="col-lg-5">
@@ -291,7 +281,6 @@
 
     </div>
 </div>
-<!-- depertment_area_end  -->
 
 <footer class="footer">
     <div class="footer_top">
@@ -382,7 +371,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <!-- link that opens popup -->
 
-<!-- form itself end-->
 <form id="test-form" class="white-popup-block mfp-hide">
     <div class="popup_box ">
         <div class="popup_inner">
@@ -411,26 +399,24 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </h3>
             <form action="#">
                 <div class="row">
+                    <input type="hidden" class="form-select wide" id="default-select" name="usertype" value="Paciente">
                     <!--<div class="col-xl-12">
                         <input type="file" id="myFile" name="filename" >
                     </div>-->
                     <div class="col-xl-12">
-                        <input type="text" id="nome" name="nome"  placeholder="{{doctor.user.name}}">
+                        <input type="text" id="nome" name="nome"  placeholder="{{patient.user.name}}">
                     </div>
                     <div class="col-xl-3">
-                        <input type="number" min="0" max="120" id="idade" name="idade" placeholder="{{doctor.user.age}}">
+                        <input type="number" min="0" max="120" id="idade" name="idade" placeholder="{{patient.user.age}}">
                     </div>
                     <div class="col-xl-9">
-                        <input type="text" id="sexo" name="sexo"  placeholder="{{doctor.user.sex}}">
+                        <input type="text" id="sexo" name="sexo"  placeholder="{{patient.user.sex}}">
                     </div>
                     <div class="col-xl-12">
-                        <input type="text" id="especialidade" name="especialidade"  placeholder="{{doctor.spec}}">
+                        <input type="text" id="profissao" name="profissao"  placeholder="{{patient.job}}">
                     </div>
                     <div class="col-xl-12">
-                        <input type="text" id="adicional" name="adicional"  placeholder="{{doctor.diseases}}">
-                    </div>
-                    <div class="col-xl-12">
-                        <input type="email" id="email" name="email" placeholder="{{doctor.user.email}}">
+                        <input type="email" id="email" name="email" placeholder="{{patient.user.email}}">
                     </div>
                     <div class="col-xl-12">
                         <button type="submit" class="boxed-btn3">Alterar Dados</button>
@@ -467,9 +453,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </form>
-<!-- form itself end -->
-
 <!-- JS here -->
+
+<!--<script src="{% static 'doctors/js/alertify/script.js' %}"></script>-->
 <script src="{% static 'doctors/js/vendor/modernizr-3.5.0.min.js' %}"></script>
 <script src="{% static 'doctors/js/vendor/jquery-1.12.4.min.js' %}"></script>
 <script src="{% static 'doctors/js/popper.min.js' %}"></script>

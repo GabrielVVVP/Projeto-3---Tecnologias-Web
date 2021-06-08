@@ -122,18 +122,24 @@
                         </div>
                         <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
                             <h3 style="margin-bottom: 5%; font-size: medium;">{{ closedrequest.patient.user.name }}</h3>
-                            <span style="margin-bottom: 5%;">{{ closedrequest.patient.user.age}}</span>
-                            <h1 style="margin-bottom: 5%; font-size: small;">Profissão</h1>
-                            <div class="row" style="margin-bottom: 5%;">
-                                <div class="col-xl-12">
-                                    <h0>{{ closedrequest.patient.job }}</h0>
-                                </div>
-                            </div>
+                            <span style="margin-bottom: 5%;">{{ closedrequest.patient.user.age}} Anos</span>
+                            <span style="margin-bottom: 5%;">Profissão: {{ closedrequest.patient.job }}</span>
                             <a href="/menu/patientdiag/patient/{{id}}/{{closedrequest.patient.id}}" class="genric-btn info-border">Diagnósticos</a>    
                         </div>
                     </div>
                 </div>  
             {% endfor %}
+            {% if not closedrequests %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_expert">
+                        <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
+                            <h3 style="margin-bottom: 5%; font-size: medium;">Nenhum Paciente na Lista</h3>
+                            <span style="margin-bottom: 5%;">Aguarde Novas Requisições</span> 
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            {% endif %}
             </div>
     </div>
 </div>

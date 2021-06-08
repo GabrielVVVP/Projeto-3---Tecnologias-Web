@@ -135,6 +135,19 @@
         {% endfor %}
         </div>
         <div class="row justify-content-center ">
+        {% if not openrequests %}
+            <div class="col-lg-4 col-md-6">
+                <div class="single_expert">
+                    <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
+                        <h3 style="margin-bottom: 5%; font-size: medium;">Nenhuma Requisição no Momento</h3>
+                        <span style="margin-bottom: 5%;">Aguarde Novas Requisições</span> 
+                    </div>
+                </div>
+            </div>  
+        </div>
+        {% endif %}
+        </div>
+        <div class="row justify-content-center ">
             <div class="col-lg-6">
                 <div class="section_title mb-55 text-center">
                     <h3>Lista de Pacientes</h3>
@@ -143,26 +156,35 @@
         </div>
         <div class="row justify-content-center">
             {% for closedrequest in closedrequests %}
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="single_expert">
                         <div class="expert_thumb" style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);">
                             <img src="{{ closedrequest.patient.user.image.url}}" alt="">
                         </div>
                         <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
                             <h3 style="margin-bottom: 5%; font-size: medium;">{{ closedrequest.patient.user.name }}</h3>
-                            <span style="margin-bottom: 5%;">{{ closedrequest.patient.user.age}}</span>
-                            <h1 style="margin-bottom: 5%; font-size: small;">Profissão</h1>
-                            <div class="row" style="margin-bottom: 5%;">
-                                <div class="col-xl-12">
-                                    <h0>{{ closedrequest.patient.job }}</h0>
-                                </div>
-                            </div>
-                            <a href="/menu/doctor/view/{{id}}/{{closedrequest.patient.id}}" class="genric-btn info-border">Página do Paciente</a>    
+                            <span style="margin-bottom: 5%;">{{ closedrequest.patient.user.age}} Anos</span>
+                            <span style="margin-bottom: 5%;">Profissão: {{ closedrequest.patient.job }}</span>
+                            <a href="/menu/check/doctor/patient/view/{{id}}/{{closedrequest.patient.id}}" class="genric-btn info-border">Verificar Paciente</a>    
                         </div>
                     </div>
                 </div>  
             {% endfor %}
+        </div>
+            <div class="row justify-content-center">
+            {% if not closedrequests %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_expert">
+                        <div style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4); margin-bottom: 5%;" class="experts_name text-center">
+                            <h3 style="margin-bottom: 5%; font-size: medium;">Nenhum Paciente na Lista</h3>
+                            <span style="margin-bottom: 5%;">Aguarde Novas Requisições</span> 
+                        </div>
+                    </div>
+                </div>  
             </div>
+            {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 <!-- expert_doctors_area_end -->

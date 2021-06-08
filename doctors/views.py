@@ -1,3 +1,4 @@
+from django.db.models import query
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import Feature, User, Patient, Doctor, Event, Instance, Symptom, Diagnostic, Disease, Reference
@@ -363,9 +364,9 @@ def menu(request,user_id,type=""):
         else:
             spec = request.POST.get('especialidade')
             diseases = request.POST.get('adicional')
-            if thisuser.spec != spec:
+            if spec != "":
                 thisuser.spec = spec
-            if thisuser.diseases != diseases:
+            if diseases != "":
                 thisuser.diseases = diseases    
             thisuser.save() 
             return render(request, 'doctors/doctor/menu.html', {'doctor':thisuser,'id':user_id})        
@@ -380,8 +381,9 @@ def diagnostic(request,user_id,instance_id=0,diag_id=0,check=False,patient_id=""
             if thisuser == None:
                 thisuser = Patient.objects.all().filter(user=user).first()
                 usertype = "Patient"     
-            queryinstances = Instance.objects.all().filter(user=user)     
-            return render(request, 'doctors/patient/diagnostic.html', {'patient':thisuser,'id':user_id, 'instances':queryinstances})
+            queryinstances = Instance.objects.all().filter(user=user)
+            queryopen = Instance.objects.all().filter(status="Open")
+            return render(request, 'doctors/patient/diagnostic.html', {'patient':thisuser,'id':user_id, 'instances':queryinstances, 'open':queryopen})
         else:
             usertype = None
             user = User.objects.all().filter(encryptid=user_id).first()
@@ -650,6 +652,17 @@ def docshow(request,user_id,doc_id):
         else:
             return render(request, 'doctors/patient/doctorcheckdone.html', {'patient':thisuser, 'id':user_id, 'medico':thisdoctor, 'notas':notas})
 
+def patshow(request,user_id,patient_id):
+    if request.method == 'GET':
+        user = User.objects.all().filter(encryptid=user_id).first()
+        thisuser = Doctor.objects.all().filter(user=user).first()
+        usertype = "Doctor"
+        if thisuser == None:
+            thisuser = Patient.objects.all().filter(user=user).first()
+            usertype = "Patient"
+        thispatient = Patient.objects.all().filter(id=patient_id).first()
+        return render(request, 'doctors/doctor/patientcheckdone.html', {'doctor':thisuser, 'id':user_id, 'patient':thispatient})
+
 def send_message(api_key,api_dom,api_send,user_mail,subject,param,thres,valor,site):
     from_origin = 'Aries Micro-Estações <{}>'.format(api_send)
     return requests.post(
@@ -676,7 +689,12 @@ def calendar(request,user_id,type="1"):
                 thisuser = Patient.objects.all().filter(user=user).first()
                 usertype = "Patient"
             consultas = Event.objects.all().filter(patient=thisuser)
-            return render(request, 'doctors/patient/calendar.html', {'patient':thisuser,'id':user_id, 'consultas':consultas})
+            consultas_mod = []
+            for consulta in consultas:
+                date = consulta.date
+                date = ("-").join([date.split("-")[0],date.split("-")[1],(str(int(date.split("-")[2])+1))])
+                consultas_mod.append({'id':consulta.id,'name':consulta.eventtype,'doctor':consulta.doctor.user.name,'spec':consulta.doctor.spec,'description':consulta.description,'date':date,'caltype':consulta.calendartype})  
+            return render(request, 'doctors/patient/calendar.html', {'patient':thisuser,'id':user_id, 'consultas':consultas_mod})
         else:
             usertype = None
             user = User.objects.all().filter(encryptid=user_id).first()
@@ -686,7 +704,12 @@ def calendar(request,user_id,type="1"):
                 thisuser = Patient.objects.all().filter(user=user).first()
                 usertype = "Patient"
             consultas = Event.objects.all().filter(doctor=thisuser)
-            return render(request, 'doctors/doctor/calendar.html', {'doctor':thisuser,'id':user_id, 'consultas':consultas})
+            consultas_mod = []
+            for consulta in consultas:
+                date = consulta.date
+                date = ("-").join([date.split("-")[0],date.split("-")[1],(str(int(date.split("-")[2])+1))])
+                consultas_mod.append({'id':consulta.id,'name':consulta.eventtype,'patient':consulta.patient.user.name,'sexo':consulta.patient.user.sex,'descricao':consulta.description,'date':date,'caltype':consulta.calendartype}) 
+            return render(request, 'doctors/doctor/calendar.html', {'doctor':thisuser,'id':user_id, 'consultas':consultas_mod})
 
 
 def patients(request,user_id,patient_id=None,type=None):
@@ -711,7 +734,7 @@ def patients(request,user_id,patient_id=None,type=None):
     if request.method == 'POST':
         if type=="1":
             usertype = None
-	    user = User.objects.all().filter(encryptid=user_id).first()
+            user = User.objects.all().filter(encryptid=user_id).first()
             thisuser = Doctor.objects.all().filter(user=user).first()
             usertype = "Doctor"
             if thisuser == None:
@@ -739,38 +762,69 @@ def patients(request,user_id,patient_id=None,type=None):
             closedrequests = Reference.objects.all().filter(doctor=thisuser, status="Closed")
             return render(request, 'doctors/doctor/requisições.html', {'doctor':thisuser,'id':user_id, 'openrequests':openrequests, 'closedrequests':closedrequests})
 
-def event(request,user_id,patient_id):
+def event(request,user_id,patient_id="",event_id="",type=""):
     if request.method == 'GET':
-        usertype = None
-        user = User.objects.all().filter(encryptid=user_id).first()
-        thisuser = Doctor.objects.all().filter(user=user).first()
-        usertype = "Doctor"
-        if thisuser == None:
-            thisuser = Patient.objects.all().filter(user=user).first()
-            usertype = "Patient"
-        thispatient = Patient.objects.all().filter(id=patient_id).first()
-        events = Event.objects.all().filter(doctor=thisuser,patient=thispatient)
-        eventtypes = ["Consulta","Cirurgia"]  
-        return render(request, 'doctors/doctor/patientevent.html', {'doctor':thisuser,'id':user_id, 'patient':thispatient, 'events':events, 'eventtypes':eventtypes})
+        if event_id!="":
+            user = User.objects.all().filter(encryptid=user_id).first()
+            thisuser = Doctor.objects.all().filter(user=user).first()
+            events = Event.objects.all().filter(id=event_id).first()
+            return render(request, 'doctors/doctor/eventsedit.html', {'doctor':thisuser,'id':user_id, 'event':events})
+        else:    
+            usertype = None
+            user = User.objects.all().filter(encryptid=user_id).first()
+            thisuser = Doctor.objects.all().filter(user=user).first()
+            usertype = "Doctor"
+            if thisuser == None:
+                thisuser = Patient.objects.all().filter(user=user).first()
+                usertype = "Patient"
+            thispatient = Patient.objects.all().filter(id=patient_id).first()
+            events = Event.objects.all().filter(doctor=thisuser,patient=thispatient)
+            eventtypes = ["Consulta","Cirurgia"]  
+            return render(request, 'doctors/doctor/patientevent.html', {'doctor':thisuser,'id':user_id, 'patient':thispatient, 'events':events, 'eventtypes':eventtypes})
     
     else:
-        usertype = None
-        user = User.objects.all().filter(encryptid=user_id).first()
-        thisuser = Doctor.objects.all().filter(user=user).first()
-        usertype = "Doctor"
-        if thisuser == None:
-            thisuser = Patient.objects.all().filter(user=user).first()
-            usertype = "Patient"
-        thispatient = Patient.objects.all().filter(id=patient_id).first()
-        typeevent = request.POST.get('default-select')
-        if typeevent == "Cirurgia":
-            hiddenval = "event"
+        if type == "edit":
+            user = User.objects.all().filter(encryptid=user_id).first()
+            thisuser = Doctor.objects.all().filter(user=user).first()
+            typeevent = request.POST.get('default-select')
+            if typeevent == "Cirurgia":
+                hiddenval = "event"
+            else:
+                hiddenval = "holiday"
+            date = request.POST.get('data')
+            description = request.POST.get('descricao')
+            events = Event.objects.all().filter(id=event_id).first()
+            events.calendartype = hiddenval
+            events.eventtype = typeevent
+            if date != "":
+                events.date = date
+            if description != "":
+                events.description = description
+            events.save()
+            return render(request, 'doctors/doctor/eventsedit.html', {'doctor':thisuser,'id':user_id, 'event':events})
+        elif type == "delete":
+            user = User.objects.all().filter(encryptid=user_id).first()
+            thisuser = Doctor.objects.all().filter(user=user).first()
+            event = Event.objects.all().filter(id=event_id).first()
+            event.delete()
+            closedrequests = Reference.objects.all().filter(doctor=thisuser, status="Closed")
+            return render(request, 'doctors/doctor/events.html', {'doctor':thisuser,'id':user_id, 'closedrequests':closedrequests})
         else:
-            hiddenval = "holiday"    
-        date = request.POST.get('data')
-        description = request.POST.get('descricao')
-        newevent = Event(patient=thispatient,doctor=thisuser,eventtype=typeevent,date=date,description=description,calendartype=hiddenval)
-        newevent.save() 
-        events = Event.objects.all().filter(doctor=thisuser,patient=thispatient)
-        eventtypes = ["Consulta","Cirurgia"]  
-        return render(request, 'doctors/doctor/patientevent.html', {'doctor':thisuser,'id':user_id, 'patient':thispatient, 'events':events, 'eventtypes':eventtypes})    
+            user = User.objects.all().filter(encryptid=user_id).first()
+            thisuser = Doctor.objects.all().filter(user=user).first()
+            if thisuser == None:
+                thisuser = Patient.objects.all().filter(user=user).first()
+            thispatient = Patient.objects.all().filter(id=patient_id).first()
+            typeevent = request.POST.get('default-select')
+            if typeevent == "Cirurgia":
+                hiddenval = "event"
+            else:
+                hiddenval = "holiday"    
+            date = request.POST.get('data')
+            description = request.POST.get('descricao')
+            newevent = Event(patient=thispatient,doctor=thisuser,eventtype=typeevent,date=date,description=description,calendartype=hiddenval)
+            newevent.save() 
+            events = Event.objects.all().filter(doctor=thisuser,patient=thispatient)
+            eventtypes = ["Consulta","Cirurgia"]  
+            return render(request, 'doctors/doctor/patientevent.html', {'doctor':thisuser,'id':user_id, 'patient':thispatient, 'events':events, 'eventtypes':eventtypes})      
+

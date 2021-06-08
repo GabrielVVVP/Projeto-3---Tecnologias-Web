@@ -133,7 +133,7 @@
                             <h3 style="margin-bottom: 5%;">{{ event.eventtype }}</h3>
                             <span style="margin-bottom: 5%;">{{ event.date }}</span>
                             <span style="margin-bottom: 5%;">{{ event.description }}</span>
-                            <a href="/menu/events/edit/{{id}}/{{ event.id}}" style="margin-top: 5%;" class="genric-btn info-border">Editar</a>   
+                            <a href="/menu/events/edit/{{id}}/{{event.id}}" style="margin-top: 5%;" class="genric-btn info-border">Editar</a>   
                         </div>
                     </div>
                 </div>  
@@ -400,12 +400,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </div>
 </form>
 
-<form id="test-form2" class="white-popup-block mfp-hide" enctype="multipart/form-data" method="POST" action="/menu/update/{{id}}/user">
+<form id="test-form2" class="white-popup-block mfp-hide" method="POST" action="/menu/events/patient/{{id}}/{{patient.id}}">
     {% csrf_token %}
     <div class="popup_box ">
         <div class="popup_inner">
             <h3>
-            <span>Alterar Dados</span>
+            <span>Novo Evento</span>
             </h3>
             <form action="#">
                 <div class="row">
@@ -413,22 +413,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <input type="file" id="myFile" name="filename" >
                     </div>-->
                     <div class="col-xl-12">
-                        <input type="text" id="nome" name="nome"  placeholder="{{doctor.user.name}}">
-                    </div>
-                    <div class="col-xl-3">
-                        <input type="number" min="0" max="120" id="idade" name="idade" placeholder="{{doctor.user.age}}">
-                    </div>
-                    <div class="col-xl-9">
-                        <input type="text" id="sexo" name="sexo"  placeholder="{{doctor.user.sex}}">
+                        <select class="form-select wide" id="default-select" name="default-select" class="">
+                            <option data-display="Escolha o tipo de Evento">Escolha o tipo de Evento</option>
+                            <option value="Consulta">Consulta</option>
+                            <option value="Cirurgia">Cirurgia</option>
+                        </select>
                     </div>
                     <div class="col-xl-12">
-                        <input type="text" id="especialidade" name="especialidade"  placeholder="{{doctor.spec}}">
+                        <input type="date" id="data" name="data" placeholder="Dia do Evento">
                     </div>
                     <div class="col-xl-12">
-                        <input type="text" id="adicional" name="adicional"  placeholder="{{doctor.diseases}}">
-                    </div>
-                    <div class="col-xl-12">
-                        <input type="email" id="email" name="email" placeholder="{{doctor.user.email}}">
+                        <input type="text" id="descricao" name="descricao"  placeholder="Descrição do Evento">
                     </div>
                     <div class="col-xl-12">
                         <button type="submit" class="boxed-btn3">Alterar Dados</button>
