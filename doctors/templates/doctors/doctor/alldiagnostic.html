@@ -134,17 +134,15 @@
                             <div class="col-xl-12">
                                 <h0>Doença Principal</h0>
                             </div>
-                            {% for disease in diseases %}
                             <div class="col-xl-12">
-                                <p>{{ disease.name }}</p>
+                                <p>{{ diagnostic.mainname }}</p>
                             </div>
                             <div class="col-xl-12">
                                 <h0>Probabilidade (%)</h0>
                             </div>
                             <div class="col-xl-12">
-                                <p>{{ disease.probability }}</p>
+                                <p>{{ diagnostic.mainprob }}</p>
                             </div>
-                            {% endfor %}
                         </div>
                         <a href="/menu/patientdiag/patient/diagnostic/{{id}}/{{patient.user.id}}/{{diagnostic.id}}/true" class="genric-btn info-border">Verificar Diagnóstico</a>    
                     </div>
