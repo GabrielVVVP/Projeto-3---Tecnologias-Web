@@ -1,3 +1,4 @@
+![image](https://user-images.githubusercontent.com/60860861/122309832-6c048400-cee5-11eb-95a8-fecb226c3c55.jpg)
 # Tecnologias Web - Projeto 3 - SmartDoctor
 
 ## Integrante
@@ -73,7 +74,7 @@ O projeto se chama SmartDoctor e se trata de uma plataforma Web que realiza diag
 Logo do Smart Doctor:
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60860861/120951459-3ad6c780-c71f-11eb-8677-14be9b63ae88.png" width="300" height="100"></img>
+  <img src="https://user-images.githubusercontent.com/60860861/122309837-6eff7480-cee5-11eb-8a75-3107dd5e4413.jpg" width="300" height="100"></img>
 </p>
 
 <br></br>Link do projeto: https://warm-everglades-39735.herokuapp.com/
