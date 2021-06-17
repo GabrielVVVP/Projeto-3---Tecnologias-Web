@@ -180,7 +180,7 @@ Seguindo o percurso seguido nas páginas dos pacientes, o terceiro passo, e tamb
 <br></br>
 <br></br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60860861/122313969-a2de9800-ceed-11eb-8775-9d86148cfa27.png" width="600" height="500"></img>
+  <img src="https://user-images.githubusercontent.com/60860861/122313969-a2de9800-ceed-11eb-8775-9d86148cfa27.png" width="800" height="500"></img>
 </p>
 <br></br>
 
