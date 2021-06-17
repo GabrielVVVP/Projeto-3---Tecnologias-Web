@@ -136,6 +136,86 @@ Assim, a ordem de eventos é:
 4. Na página de Médicos Especialistas: Ao selecionar um diagnóstico recebido, a plataforma irá recomendar um médico baseado na sua especialidade, e o paciente poderá mandar uma requisição de consulta para que o médico selecionado possa lhe avaliar. Após o médico receber esta requisição e aceitar, basta o usuário aguardar a resposta do médico via email;
 5. Na página de Calendário de Consultas: Nesta ferramenta útil, o usuário poderá sempre verificar as datas e características de consultas e cirurgias dos médicos recomendados pela plataforma.
 
+#### Adicionar Sintomas
+
+Iniciando o percurso seguido nas páginas dos pacientes, o primeiro passo a ser realizado é a criação de uma **Instância**, que representa um conjunto de sintomas dado pelo paciente. Os valores são arbitrários, já que dependem da gravidade percebida pelo próprio paciente, indo de uma escala de 0 até 10. Para isso, basta clicar no botão *Criar Instância*, e inicialmente, três valores de sintomas podem ser inseridos inicialmente. 
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122310150-11b7f300-cee6-11eb-9911-85787aa93d80.png" width="800" height="500"></img>
+</p>
+<br></br>
+Mais valores podem ser inseridos ou removidos posteriormente, clicando-se no botão de *Editar Instância*, que também permite apagar completamente a instância criada.
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122310661-29dc4200-cee7-11eb-8e0b-0473d5e46bc3.png" width="1000" height="500"></img>
+</p>
+<br></br>
+
+#### Diagnóstico Inteligente
+
+Seguindo o percurso seguido nas páginas dos pacientes, o segundo passo a ser realizado é a criação de um **Diagnóstico**, que representa um conjunto de possíveis doenças a partir dos sintomas de uma dada instância.  Para realizar o diagnóstico, basta clicar no botão *Diagnóstico Inteligente*. Os resultados principais aparecerão na página.
+<br></br>
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122313206-2dbe9300-ceec-11eb-8630-97fa6ada2ee2.png" width="800" height="500"></img>
+</p>
+Para cada diagnóstico, apenas os 5 resultados com maiores probabilidades de ocorrência são apresentados.
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122313311-5ba3d780-ceec-11eb-87a5-a5c75981ea6f.png" width="1000" height="500"></img>
+</p>
+<br></br>
+Uma vez que o diagnóstico é feito para uma instância, o sistema bloqueará a dada instância para a realização do diagnóstico novamente, para evitar reutilização indevida da API EndlessMedical, já que os resultados para uma dada instância serão iguais, caso os sintomas não sejam alterados. Caso necessite rever os resultados do diagnóstico, ver na página *Histórico de Diagnósticos*.
+<br></br>
+<br></br>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122313885-6dd24580-ceed-11eb-9faf-109de5cf563a.png" width="1000" height="500"></img>
+</p>
+
+
+#### Histórico de Diagnósticos
+
+Seguindo o percurso seguido nas páginas dos pacientes, o terceiro passo, e também opcional, é verificar os **resultados dos diagnósticos** já realizados. Para isto, basta selecionar o diagnóstico desejado, e ele demonstrará os mesmos resultados de quando foi criado.
+<br></br>
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122313969-a2de9800-ceed-11eb-8775-9d86148cfa27.png" width="800" height="500"></img>
+</p>
+<br></br>
+
+#### Médicos Especialistas
+
+Seguindo o percurso seguido nas páginas dos pacientes, o quarto passo a ser realizado é a procura de **Médicos Especialistas** da *doença de maior probabilidade de um dado diagnóstico*. Primeiramente, basta selecionar um diagnóstico da lista dos já realizados.
+
+<br></br>
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122314338-61022180-ceee-11eb-92e3-aa38965eb8a9.png" width="800" height="600"></img>
+</p>
+Depois, selecionar um médico dentre os resultados, que são *especialistas na doença de maior probabilidade de um dado diagnóstico*.
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122314390-79723c00-ceee-11eb-81f7-4222051e2c36.png" width="1000" height="600"></img>
+</p>
+<br></br>
+Por fim, clicar Marcar Consulta. O prompt de confirmação irá aparecer, e o Médico selecionado irá ser notificado da sua procura.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122314535-c1915e80-ceee-11eb-82d5-a9a98877108c.png" width="1000" height="600"></img>
+</p>
+<br></br>
+Após isso é só esperar o contato do Médico!
+
+#### Calendário de Consultas
+
+Seguindo o percurso seguido nas páginas dos pacientes, o último passo a ser realizado, e que também é opcional, é a utilização do **Calendário de Consultas** da plataforma. Todos as consultas e/ou cirurgias marcadas por qualquer médico associado ao dado paciente irão aparecer no calendário interativo, facilitando a organização do paciente quando utilizar a plataforma.
+<br></br>
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122314935-7166cc00-ceef-11eb-8074-1a316f7b743c.png" width="800" height="600"></img>
+</p>
+<br></br>
+
 ### Médico
 Após entrar na conta via Criar Conta ou Login, o usuário do tipo Médico é redirecionado para o seu menu principal.
 
@@ -159,3 +239,55 @@ Assim, a ordem de eventos é:
 3. Na página de Histórico de Diagnóstico: Escolher qualquer paciente aceito da lista de pacientes e verificar os seus diagnósticos e assim avaliar o seu caso;
 4. Na página de Marcar Consultas ou Cirurgias: A partir da análise dos sintomas e diagnósticos, o médico pode marcar um evento, como uma consulta com o paciente para avaliar o seu caso;
 5. Na página de Calendário de Consultas: Todos as consultas ou cirurgias marcados pelo médico na plataforma estarão mostrados neste calendário interativo, para facilitar a organização e evitar conflitos de horários.
+
+#### Requisições de Pacientes
+
+Iniciando o percurso seguido nas páginas dos médicos, o primeiro passo a ser realizado é a verificação das **Requisições dos Pacientes**, que representam os pedidos de contato dos pacientes. O médico tem a opção de aceitar ou de recusar as requisições. Caso aceite-as, elas aparecerão na lista de pacientes abaixo.
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122319673-513b0b00-cef7-11eb-8e6a-5ca732533b0d.png" width="800" height="500"></img>
+</p>
+<br></br>
+
+#### Histórico de Instâncias
+
+Seguindo o percurso seguido nas páginas dos médicos, é a página de **Histórico de Instâncias**, na qual o médico pode escolher um paciente aceito pelas requisições, e verificar suas instâncias.
+<br></br>
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122322998-c230f180-cefc-11eb-885c-5cd1606855dd.png" width="800" height="400"></img>
+</p>
+<br></br>
+
+
+#### Histórico de Diagnósticos
+
+Seguindo o percurso seguido nas páginas dos médicos, o terceiro passo, é verificar os **Históricos dos Diagnósticos** já realizados. Para isto, basta selecionar o paciente aceito pelas requisições, e o diagnóstico que deseja verificar.
+
+<br></br>
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122323051-da087580-cefc-11eb-9955-35e9e5a8ace9.png" width="800" height="400"></img>
+</p>
+<br></br>
+
+#### Eventos
+
+Seguindo o percurso seguido nas páginas dos pacientes, o quarto passo a ser realizado é a criação de **Eventos**, como consultas e cirurgias. Após verificar as instâncias e diagnósticos de um dado paciente, o médico poderá marcar os eventos pela plataforma. Inicialmente, precisará escolher um paciente, para marcar a consulta com ele. 
+
+<br></br>
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122323218-1f2ca780-cefd-11eb-83da-f7fe3990fb6a.png" width="800" height="400"></img>
+</p>
+
+#### Calendário de Consultas
+
+Seguindo o percurso seguido nas páginas dos médicos, o último passo a ser realizado, e que também é opcional, é a utilização do **Calendário de Consultas** da plataforma. Todos as consultas e/ou cirurgias marcadas por você médico, aos seus pacientes irão aparecer no calendário interativo, facilitando a organização do médico quando utilizar a plataforma.
+<br></br>
+<br></br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60860861/122323354-5ef38f00-cefd-11eb-83cf-a76f37e3d3ad.png" width="800" height="400"></img>
+</p>
+<br></br>
+
