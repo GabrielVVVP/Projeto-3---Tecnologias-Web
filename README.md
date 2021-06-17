@@ -193,7 +193,7 @@ Seguindo o percurso seguido nas páginas dos pacientes, o quarto passo a ser rea
 <p align="center">
   <img src="https://user-images.githubusercontent.com/60860861/122314338-61022180-ceee-11eb-92e3-aa38965eb8a9.png" width="800" height="600"></img>
 </p>
-Depois, selecionar um médico dentre os resultados, que são *especialistas na doença de maior probabilidade de um dado diagnóstico*.
+Depois, selecionar um médico dentre os resultados, que são especialistas na doença de maior probabilidade de um dado diagnóstico.
 <br></br>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/60860861/122314390-79723c00-ceee-11eb-81f7-4222051e2c36.png" width="800" height="600"></img>
