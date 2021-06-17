@@ -180,7 +180,7 @@ Seguindo o percurso seguido nas páginas dos pacientes, o terceiro passo, e tamb
 <br></br>
 <br></br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60860861/122313969-a2de9800-ceed-11eb-8775-9d86148cfa27.png" width="800" height="500"></img>
+  <img src="https://user-images.githubusercontent.com/60860861/122313969-a2de9800-ceed-11eb-8775-9d86148cfa27.png" width="600" height="500"></img>
 </p>
 <br></br>
 
@@ -196,12 +196,12 @@ Seguindo o percurso seguido nas páginas dos pacientes, o quarto passo a ser rea
 Depois, selecionar um médico dentre os resultados, que são *especialistas na doença de maior probabilidade de um dado diagnóstico*.
 <br></br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60860861/122314390-79723c00-ceee-11eb-81f7-4222051e2c36.png" width="1000" height="600"></img>
+  <img src="https://user-images.githubusercontent.com/60860861/122314390-79723c00-ceee-11eb-81f7-4222051e2c36.png" width="800" height="600"></img>
 </p>
 <br></br>
 Por fim, clicar Marcar Consulta. O prompt de confirmação irá aparecer, e o Médico selecionado irá ser notificado da sua procura.
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60860861/122314535-c1915e80-ceee-11eb-82d5-a9a98877108c.png" width="1000" height="600"></img>
+  <img src="https://user-images.githubusercontent.com/60860861/122314535-c1915e80-ceee-11eb-82d5-a9a98877108c.png" width="800" height="600"></img>
 </p>
 <br></br>
 Após isso é só esperar o contato do Médico!
@@ -212,7 +212,7 @@ Seguindo o percurso seguido nas páginas dos pacientes, o último passo a ser re
 <br></br>
 <br></br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60860861/122314935-7166cc00-ceef-11eb-8074-1a316f7b743c.png" width="800" height="600"></img>
+  <img src="https://user-images.githubusercontent.com/60860861/122314935-7166cc00-ceef-11eb-8074-1a316f7b743c.png" width="1000" height="600"></img>
 </p>
 <br></br>
 
@@ -224,7 +224,7 @@ Na página principal do Médico, cinco opções de páginas podem ser selecionad
 
 <br></br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60860861/120949747-956e2480-c71b-11eb-810a-46b0ad799d9f.png" width="800" height="500"></img>
+  <img src="https://user-images.githubusercontent.com/60860861/120949747-956e2480-c71b-11eb-810a-46b0ad799d9f.png" width="800" height="600"></img>
 </p>
 
 <br></br>Elas estão organizadas na ordem em que a plataforma foi projetada:
@@ -251,7 +251,7 @@ Iniciando o percurso seguido nas páginas dos médicos, o primeiro passo a ser r
 
 #### Histórico de Instâncias
 
-Seguindo o percurso seguido nas páginas dos médicos, é a página de **Histórico de Instâncias**, na qual o médico pode escolher um paciente aceito pelas requisições, e verificar suas instâncias.
+Seguindo o percurso seguido nas páginas dos médicos, é a página de **Histórico de Instâncias**, na qual o médico pode escolher um paciente aceito pelas requisições, e verificar suas instâncias clicando em *Instâncias*.
 <br></br>
 <br></br>
 <p align="center">
@@ -262,7 +262,7 @@ Seguindo o percurso seguido nas páginas dos médicos, é a página de **Histór
 
 #### Histórico de Diagnósticos
 
-Seguindo o percurso seguido nas páginas dos médicos, o terceiro passo, é verificar os **Históricos dos Diagnósticos** já realizados. Para isto, basta selecionar o paciente aceito pelas requisições, e o diagnóstico que deseja verificar.
+Seguindo o percurso seguido nas páginas dos médicos, o terceiro passo, é verificar os **Históricos dos Diagnósticos** já realizados. Para isto, basta selecionar o paciente aceito pelas requisições, e o diagnóstico que deseja verificar, clicando em *Diagnósticos*.
 
 <br></br>
 <br></br>
@@ -287,7 +287,7 @@ Seguindo o percurso seguido nas páginas dos médicos, o último passo a ser rea
 <br></br>
 <br></br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60860861/122323354-5ef38f00-cefd-11eb-83cf-a76f37e3d3ad.png" width="800" height="400"></img>
+  <img src="https://user-images.githubusercontent.com/60860861/122323354-5ef38f00-cefd-11eb-83cf-a76f37e3d3ad.png" width="1000" height="600"></img>
 </p>
 <br></br>
 
