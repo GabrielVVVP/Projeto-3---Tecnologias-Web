@@ -144,7 +144,7 @@ Iniciando o percurso seguido nas páginas dos pacientes, o primeiro passo a ser 
   <img src="https://user-images.githubusercontent.com/60860861/122310150-11b7f300-cee6-11eb-9911-85787aa93d80.png" width="800" height="500"></img>
 </p>
 <br></br>
-Mais valores podem ser inseridos ou removidos posteriormente, clicando-se no botão de *Editar Instância*, que também permite apagar completamente a instância criada.
+Mais valores podem ser inseridos ou removidos posteriormente, clicando-se no botão de Editar Instância, que também permite apagar completamente a instância criada.
 <br></br>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/60860861/122310661-29dc4200-cee7-11eb-8e0b-0473d5e46bc3.png" width="1000" height="500"></img>
@@ -165,7 +165,7 @@ Para cada diagnóstico, apenas os 5 resultados com maiores probabilidades de oco
   <img src="https://user-images.githubusercontent.com/60860861/122313311-5ba3d780-ceec-11eb-87a5-a5c75981ea6f.png" width="1000" height="500"></img>
 </p>
 <br></br>
-Uma vez que o diagnóstico é feito para uma instância, o sistema bloqueará a dada instância para a realização do diagnóstico novamente, para evitar reutilização indevida da API EndlessMedical, já que os resultados para uma dada instância serão iguais, caso os sintomas não sejam alterados. Caso necessite rever os resultados do diagnóstico, ver na página *Histórico de Diagnósticos*.
+Uma vez que o diagnóstico é feito para uma instância, o sistema bloqueará a dada instância para a realização do diagnóstico novamente, para evitar reutilização indevida da API EndlessMedical, já que os resultados para uma dada instância serão iguais, caso os sintomas não sejam alterados. Caso necessite rever os resultados do diagnóstico, ver na página Histórico de Diagnósticos.
 <br></br>
 <br></br>
 
@@ -186,7 +186,7 @@ Seguindo o percurso seguido nas páginas dos pacientes, o terceiro passo, e tamb
 
 #### Médicos Especialistas
 
-Seguindo o percurso seguido nas páginas dos pacientes, o quarto passo a ser realizado é a procura de **Médicos Especialistas** da *doença de maior probabilidade de um dado diagnóstico*. Primeiramente, basta selecionar um diagnóstico da lista dos já realizados.
+Seguindo o percurso seguido nas páginas dos pacientes, o quarto passo a ser realizado é a procura de **Médicos Especialistas** da doença de maior probabilidade de um dado diagnóstico. Primeiramente, basta selecionar um diagnóstico da lista dos já realizados.
 
 <br></br>
 <br></br>
